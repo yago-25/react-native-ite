@@ -1,45 +1,46 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import React, { useState } from 'react';
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { StyleSheet, View } from 'react-native';
+import Tab from './../../components/Tab';
+import Calculator from './../../pages/ex1/Calculator';
+import StyleAndLayout from './../../pages/ex2/StyleAndLayout';
+import Props from './../../pages/ex3/Props';
+import FatherFunction from './../../pages/ex4/FatherFunction';
+import List from './../../pages/ex5/List';
+import Axios from './../../pages/ex6/Axios';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const [tab, setTab] = useState('');
+
+  const getComponentByTab = () => {
+    switch (tab) {
+      case 'Calculadora':
+        return <Calculator />;
+      case 'Estilo e Layout':
+        return <StyleAndLayout />;
+      case 'Props':
+        return <Props />;
+      case 'Função Pai':
+        return <FatherFunction />;
+      case 'Lista':
+        return <List />;
+      case 'Axios':
+        return <Axios />
+      default:
+        return <Calculator />
+    }
+  };
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
+    <View style={styles.container}>
+      {getComponentByTab()}
+      <Tab setTab={setTab} />
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+})
