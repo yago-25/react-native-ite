@@ -8,6 +8,7 @@ import Props from './../../pages/ex3/Props';
 import FatherFunction from './../../pages/ex4/FatherFunction';
 import List from './../../pages/ex5/List';
 import Axios from './../../pages/ex6/Axios';
+import Carros from './../../pages/ex7/Carros';
 
 export default function TabLayout() {
   const [tab, setTab] = useState('');
@@ -26,6 +27,8 @@ export default function TabLayout() {
         return <List />;
       case 'Axios':
         return <Axios />
+      case "Carros":
+        return <Carros />;
       default:
         return <Calculator />
     }
