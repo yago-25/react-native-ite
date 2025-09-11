@@ -63,9 +63,11 @@ const CoresExercicio = () => {
         />
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={handleChangeColors}>
-        <Text style={styles.buttonText}>Trocar</Text>
-      </TouchableOpacity>
+      <View style={styles.containerButton}>
+        <TouchableOpacity style={styles.button} onPress={handleChangeColors}>
+          <Text style={styles.buttonText}>Trocar</Text>
+        </TouchableOpacity>
+      </View>
 
       <View style={styles.pickerContainer}>
         <Picker
@@ -87,20 +89,20 @@ export default CoresExercicio;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f9fa',
-    padding: 20,
+    backgroundColor: 'orange',
   },
   containerInputs: {
-    flexDirection: 'column',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 30,
-    gap: '30px'
+    gap: '30px',
+    backgroundColor: 'green',
+    padding: 20,
   },
   input: {
     flex: 1,
     backgroundColor: 'white',
-    borderRadius: 12,
-    height: 50,
+    height: 40,
     paddingHorizontal: 15,
     marginHorizontal: 5,
     shadowColor: '#000',
@@ -108,11 +110,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
+    width: '90px'
   },
   containerGeometricForm: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginBottom: 30,
+    marginTop: 150
   },
   geometricForm: {
     width: 100,
@@ -123,10 +127,14 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     elevation: 5,
   },
+  containerButton: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   button: {
     backgroundColor: '#4a90e2',
-    paddingVertical: 15,
-    borderRadius: 12,
+    paddingVertical: 8,
     alignItems: 'center',
     marginBottom: 20,
     shadowColor: '#000',
@@ -134,6 +142,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 6,
     elevation: 5,
+    width: '100px'
   },
   buttonText: {
     color: 'white',
@@ -141,17 +150,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   pickerContainer: {
-    backgroundColor: 'white',
     borderRadius: 12,
     overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   picker: {
-    height: 50,
-    width: '100%',
+    height: '30px',
+    width: '200px',
   },
 });
