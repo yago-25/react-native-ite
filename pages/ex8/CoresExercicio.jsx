@@ -8,6 +8,59 @@ const CoresExercicio = () => {
   const [color3, setColor3] = useState('');
   const [shape, setShape] = useState('square');
 
+  const translateColor = (color) => {
+    if (!color) return color;
+
+    const mapaCores = {
+      vermelho: 'red',
+      azul: 'blue',
+      verde: 'green',
+      amarelo: 'yellow',
+      preto: 'black',
+      branco: 'white',
+      cinza: 'gray',
+      laranja: 'orange',
+      rosa: 'pink',
+      roxo: 'purple',
+      marrom: 'brown',
+      ciano: 'cyan',
+      magenta: 'magenta',
+      dourado: 'gold',
+      prata: 'silver',
+      bege: 'beige',
+      violeta: 'violet',
+      índigo: 'indigo',
+      turquesa: 'turquoise',
+      coral: 'coral',
+      lavanda: 'lavender',
+      oliva: 'olive',
+      limão: 'lime',
+      azulclaro: 'lightblue',
+      azulescuro: 'darkblue',
+      verdeclaro: 'lightgreen',
+      verdeescuro: 'darkgreen',
+      vermelhoclaro: 'lightcoral',
+      vermelhescuro: 'darkred',
+      cinzaclaro: 'lightgray',
+      cinzaescuro: 'darkgray',
+      marinho: 'navy',
+      marfim: 'ivory',
+      chocolate: 'chocolate',
+      khaki: 'khaki',
+      teal: 'teal',
+      orquídea: 'orchid',
+      salmão: 'salmon',
+      trigo: 'wheat',
+      aqua: 'aqua',
+      fúcsia: 'fuchsia',
+      índigoclaro: 'mediumslateblue',
+    };
+
+    const cor = color.toLowerCase().trim();
+    return mapaCores[cor] || color; 
+  };
+
+
   const handleChangeColors = () => {
     setColor1(color2);
     setColor2(color3);
@@ -15,8 +68,10 @@ const CoresExercicio = () => {
   };
 
   const getShapeStyle = (color) => {
+    const translatedColor = translateColor(color);
+
     if (shape === 'circle') {
-      return { backgroundColor: color || '#ccc', borderRadius: 50 };
+      return { backgroundColor: translatedColor || '#ccc', borderRadius: 50 };
     }
     if (shape === 'triangle') {
       return {
@@ -29,12 +84,12 @@ const CoresExercicio = () => {
         borderStyle: 'solid',
         borderLeftColor: 'transparent',
         borderRightColor: 'transparent',
-        borderBottomColor: color || '#ccc',
+        borderBottomColor: translatedColor || '#ccc',
         shadowColor: 'transparent',
         elevation: 0,
       };
     }
-    return { backgroundColor: color || '#ccc', borderRadius: 8 };
+    return { backgroundColor: translatedColor || '#ccc', borderRadius: 8 };
   };
 
   return (
