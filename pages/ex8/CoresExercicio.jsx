@@ -1,6 +1,6 @@
 import { Picker } from '@react-native-picker/picker';
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 const CoresExercicio = () => {
   const [color1, setColor1] = useState('');
@@ -14,7 +14,28 @@ const CoresExercicio = () => {
     setColor3(color1);
   };
 
-  const getBorderRadius = () => (shape === 'circle' ? 50 : 8);
+  const getShapeStyle = (color) => {
+    if (shape === 'circle') {
+      return { backgroundColor: color || '#ccc', borderRadius: 50 };
+    }
+    if (shape === 'triangle') {
+      return {
+        width: 0,
+        height: 0,
+        backgroundColor: 'transparent',
+        borderLeftWidth: 50,
+        borderRightWidth: 50,
+        borderBottomWidth: 100,
+        borderStyle: 'solid',
+        borderLeftColor: 'transparent',
+        borderRightColor: 'transparent',
+        borderBottomColor: color || '#ccc',
+        shadowColor: 'transparent',
+        elevation: 0,
+      };
+    }
+    return { backgroundColor: color || '#ccc', borderRadius: 8 };
+  };
 
   return (
     <View style={styles.container}>
@@ -43,24 +64,18 @@ const CoresExercicio = () => {
       </View>
 
       <View style={styles.containerGeometricForm}>
-        <View
-          style={[
-            styles.geometricForm,
-            { backgroundColor: color1 || '#ccc', borderRadius: getBorderRadius() },
-          ]}
-        />
-        <View
-          style={[
-            styles.geometricForm,
-            { backgroundColor: color2 || '#ccc', borderRadius: getBorderRadius() },
-          ]}
-        />
-        <View
-          style={[
-            styles.geometricForm,
-            { backgroundColor: color3 || '#ccc', borderRadius: getBorderRadius() },
-          ]}
-        />
+        {color1.toLowerCase() === 'bolsonaro' ? (
+         <ImageBackground
+          source={require('./image.png')}
+          style={{ width: 100, height: 100 }}
+         >
+          <Text style={{ color: 'white' }}></Text>
+         </ImageBackground>
+        ) : (
+          <View style={[styles.geometricForm, getShapeStyle(color1)]} />
+        )}
+        <View style={[styles.geometricForm, getShapeStyle(color2)]} />
+        <View style={[styles.geometricForm, getShapeStyle(color3)]} />
       </View>
 
       <View style={styles.containerButton}>
@@ -78,6 +93,7 @@ const CoresExercicio = () => {
         >
           <Picker.Item label="Quadrado" value="square" />
           <Picker.Item label="Círculo" value="circle" />
+          <Picker.Item label="Triângulo" value="triangle" />
         </Picker>
       </View>
     </View>
