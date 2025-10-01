@@ -10,6 +10,7 @@ import List from './../../pages/ex5/List';
 import Axios from './../../pages/ex6/Axios';
 import Carros from './../../pages/ex7/Carros';
 import CoresExercicio from './../../pages/ex8/CoresExercicio';
+import MarvelList from './../../pages/ex9/MarvelList';
 
 export default function TabLayout() {
   const [tab, setTab] = useState('');
@@ -32,6 +33,8 @@ export default function TabLayout() {
         return <Carros />;
       case "Cores":
         return <CoresExercicio />;
+      case "Marvel":
+        return <MarvelList />;
       default:
         return <Calculator />
     }
