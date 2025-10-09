@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Tab from './../../components/Tab';
 import Calculator from './../../pages/ex1/Calculator';
+import NavigationScreen from './../../pages/ex10/NavigationScreen';
 import StyleAndLayout from './../../pages/ex2/StyleAndLayout';
 import Props from './../../pages/ex3/Props';
 import FatherFunction from './../../pages/ex4/FatherFunction';
@@ -35,6 +36,8 @@ export default function TabLayout() {
         return <CoresExercicio />;
       case "Marvel":
         return <MarvelList />;
+      case "Navigation":
+        return <NavigationScreen />;
       default:
         return <Calculator />
     }
