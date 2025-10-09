@@ -29,10 +29,17 @@ const HomeScreen = ({ navigation }) => {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('Profile')}
+          onPress={() => navigation.navigate('Login')}
           activeOpacity={0.8}
         >
-          <Text style={styles.buttonText}>Continuar</Text>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('SignUp')}
+          activeOpacity={0.8}
+        >
+          <Text style={styles.buttonText}>Entrar pela 1ª vez</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
